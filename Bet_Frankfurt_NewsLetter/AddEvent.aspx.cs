@@ -11,8 +11,11 @@ namespace Bet_Frankfurt_NewsLetter
 {
     public partial class AddEvent : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["pass"] == null)
+                Response.Redirect("CPANEL.aspx");
             if(DropDownList1.Items.Count==0)
             {
                 for (int i = 1; i <= 12; i++)

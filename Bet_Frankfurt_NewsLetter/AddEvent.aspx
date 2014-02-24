@@ -11,16 +11,16 @@
     <div>
     
     </div>
-       name: <asp:TextBox ID="TextBox1" runat="server" Height="21px" Width="418px"></asp:TextBox>
+       שם: <asp:TextBox ID="TextBox1" runat="server" Height="21px" Width="418px"></asp:TextBox>
         <p>
-          date:  <asp:TextBox ID="TextBox2" runat="server" Width="451px"></asp:TextBox>
-            month: <asp:DropDownList ID="DropDownList1" runat="server">
+          תאריך:  <asp:TextBox ID="TextBox2" runat="server" Width="451px"></asp:TextBox>
+            חודש: <asp:DropDownList ID="DropDownList1" runat="server">
             </asp:DropDownList>
         </p>
-       description: <asp:TextBox ID="TextBox3" runat="server" Height="169px" TextMode="MultiLine" Width="420px"></asp:TextBox>
+       תיאור: <asp:TextBox ID="TextBox3" runat="server" Height="169px" TextMode="MultiLine" Width="420px"></asp:TextBox>
         <p>
-            <asp:Button ID="Button1" runat="server" Text="Add to children" Width="148px" OnClick="AddChildren" />
-            <asp:Button ID="Button2" runat="server" Text="Add to adults" Width="148px" OnClick="AddAdults" />
+            <asp:Button ID="Button1" runat="server" Text="הוסף אירוע לילדים" Width="148px" OnClick="AddChildren" />
+            <asp:Button ID="Button2" runat="server" Text="הוסף אירוע למבוגרים" Width="148px" OnClick="AddAdults" />
         </p>
     </form>
 </body>

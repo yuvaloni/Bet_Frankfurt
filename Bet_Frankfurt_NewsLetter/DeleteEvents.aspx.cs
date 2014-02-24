@@ -13,6 +13,8 @@ namespace Bet_Frankfurt_NewsLetter
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["pass"] == null)
+                Response.Redirect("CPANEL.aspx");
             if (ListBox1.Items.Count == 0 && ListBox2.Items.Count == 0)
             {
                 OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
