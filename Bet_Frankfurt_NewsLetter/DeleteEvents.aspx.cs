@@ -15,7 +15,7 @@ namespace Bet_Frankfurt_NewsLetter
         {
             if (ListBox1.Items.Count == 0 && ListBox2.Items.Count == 0)
             {
-                OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=,'" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
+                OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
                 Con.Open();
                 OleDbCommand Com = new OleDbCommand("SELECT * FROM Children", Con);
                 OleDbDataReader r = Com.ExecuteReader();
@@ -35,7 +35,7 @@ namespace Bet_Frankfurt_NewsLetter
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=,'" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
+            OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
             Con.Open();
             foreach (ListItem n in ListBox1.Items)
             {
