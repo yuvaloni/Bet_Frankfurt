@@ -106,6 +106,7 @@
     <Content Include="DeleteEvents.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Frankfurt.mdb" />
+    <Content Include="Logo.jpg" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
