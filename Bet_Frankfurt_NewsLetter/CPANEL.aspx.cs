@@ -23,11 +23,6 @@ namespace Bet_Frankfurt_NewsLetter
                 Response.Redirect("AddEvent.aspx");
 
             }
-            else if (TextBox1.Text == "Yuv1407!!!")
-            {
-                Session["yuv"] = "yes";
-                Response.Redirect("Uploaddb.aspx");
-            }
             else
                 Response.Write("סיסמה שגויה");
         }
@@ -39,11 +34,6 @@ namespace Bet_Frankfurt_NewsLetter
                 Session["pass"] = "yes";
                 Response.Redirect("DeleteEvents.aspx");
 
-            }
-            else if (TextBox1.Text == "Yuv1407!!!")
-            {
-                Session["yuv"] = "yes";
-                Response.Redirect("Uploaddb.aspx");
             }
             else
                 Response.Write("סיסמה שגויה");
