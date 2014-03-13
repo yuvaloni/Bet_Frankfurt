@@ -13,8 +13,8 @@
     </div>
        שם: <asp:TextBox ID="TextBox1" runat="server" Height="21px" Width="418px"></asp:TextBox>
         <p>
-          תאריך:  <asp:TextBox ID="TextBox2" runat="server" Width="451px"></asp:TextBox>
-            חודש: <asp:DropDownList ID="DropDownList1" runat="server">
+          חודש:  <asp:TextBox ID="TextBox2" runat="server" Width="451px"></asp:TextBox>
+            תאריך: <asp:DropDownList ID="DropDownList1" runat="server">
             </asp:DropDownList>
         </p>
        תיאור: <asp:TextBox ID="TextBox3" runat="server" Height="169px" TextMode="MultiLine" Width="420px"></asp:TextBox>
