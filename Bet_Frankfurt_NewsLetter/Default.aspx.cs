@@ -89,6 +89,8 @@ namespace Bet_Frankfurt_NewsLetter
                 TextBox1.Text = "";
                 TextBox2.Text = "";
                 TextBox3.Text = "";
+                CheckBox1.Checked = false;
+                CheckBox2.Checked = false;
             }
         }
 
