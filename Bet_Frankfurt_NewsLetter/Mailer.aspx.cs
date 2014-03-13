@@ -61,6 +61,8 @@ namespace Bet_Frankfurt_NewsLetter
             {
                 var toAddress = new MailAddress(r3.GetString(3));
                 string msg = "<html Content-Type: text/html> <body>";
+                msg += @" </br> זוהי הודעה אוטומטית";
+                msg += @"<a href='http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3) + "'>אם אתה מעוניין להפסיק לקבל הודעות אלו לחץ כאן</a>";
                 if (r3.GetInt32(5) == 1)
                     msg += children;
                 msg += "</br>";
