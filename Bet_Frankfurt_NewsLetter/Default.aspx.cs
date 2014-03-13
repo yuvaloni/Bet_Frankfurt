@@ -64,7 +64,7 @@ namespace Bet_Frankfurt_NewsLetter
                    Com.Parameters.Add("@First", OleDbType.WChar).Value = First;
                    Com.Parameters.Add("@Last", OleDbType.WChar).Value = Last;
                    Com.Parameters.Add("@Email", OleDbType.WChar).Value = Email;
-                   Com.Parameters.Add("@Phone", OleDbType.WChar).Value = Phone;
+                Com.Parameters.Add("@Phone", OleDbType.WChar).Value = Phone==""?"No":Phone;
                    if(CheckBox1.Checked)
                        Com.Parameters.Add("@Children", OleDbType.Integer).Value = 1;
                    else
@@ -85,7 +85,7 @@ namespace Bet_Frankfurt_NewsLetter
 
                 invalid1 = false;
                 invalid2 = false;
-                invalid3 = false;
+                invalid3 = true;
                 TextBox1.Text = "";
                 TextBox2.Text = "";
                 TextBox3.Text = "";
@@ -132,19 +132,10 @@ namespace Bet_Frankfurt_NewsLetter
         }
          protected void TextBox3_TextChanged(object sender, EventArgs e)
         {
-            int phone;
-            if (!int.TryParse(TextBox3.Text, out phone)&&TextBox3.Text.Length!=10)
-            {
-                TextBox3.ForeColor = System.Drawing.Color.Red;
-                TextBox3.Text = "Invalid phone number!";
-                invalid3 = false;
-            }
-            else
-            {
+
                  Session["I3"] = true;
                 invalid3 = true;
                 TextBox3.ForeColor = System.Drawing.Color.Green;
-            }
              
 
         }
