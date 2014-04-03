@@ -17,6 +17,7 @@ namespace Bet_Frankfurt_NewsLetter
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+           IEnumerable<string> shit =  Directory.EnumerateFiles(Path.Combine(Server.MapPath("~"), "Pics" ));
             if (Request.QueryString["pass"] == "Alumot12")
                 send();
         }
@@ -26,6 +27,7 @@ namespace Bet_Frankfurt_NewsLetter
             var fromAddress = new MailAddress("bet.frankfurt.newsletter@gmail.com", "בית פרנקפורט");
             const string fromPassword = "1a2b3c!?!?";
             int m = DateTime.Now.Month;
+            int d = DateTime.Now.Day >= 15 ? 15 : 1;
             SmtpClient c = new SmtpClient
             {
                 Host = "smtp.gmail.com",
@@ -38,21 +40,23 @@ namespace Bet_Frankfurt_NewsLetter
             OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
             Con.Open();
             string children = "<h3> אירועים לילדים </h3> </br> <table>";
-            OleDbCommand Com = new OleDbCommand("SELECT * FROM Children WHERE [month] = @month", Con);
+            OleDbCommand Com = new OleDbCommand("SELECT * FROM Children WHERE [month] = @month AND [day] = @day", Con);
             Com.Parameters.Add("@month", OleDbType.Integer).Value = m;
+            Com.Parameters.Add("@day", OleDbType.Integer).Value = d;
             OleDbDataReader r = Com.ExecuteReader();
             while (r.Read())
             {
-                children += "<tr><td><h4>" + r.GetString(1) + "</h4></br><h5>" + r.GetString(2) + "</h5></br>" + r.GetString(3) + "</br></td></tr>";
+                children += "<tr><td><h4>" + r.GetString(1) + "</h4></br><h5>" + r.GetString(2) + "</h5></br>" + r.GetString(3) + "</br><img src='http://betfrankufrtnewsletter.apphb.com/pics/"+r.GetString(6))+"'></img></br></td></tr>";
             }
             children += "</table>";
             string adults = "<h3> אירועים למבוגרים </h3> </br> <table>";
-            OleDbCommand Com2 = new OleDbCommand("SELECT * FROM Adults WHERE [month] = @month", Con);
+            OleDbCommand Com2 = new OleDbCommand("SELECT * FROM Adults WHERE [month] = @month AND [day] = @day", Con);
             Com2.Parameters.Add("@month", OleDbType.Integer).Value = m;
+            Com2.Parameters.Add("@day", OleDbType.Integer).Value = d;
             OleDbDataReader r2 = Com2.ExecuteReader();
             while (r2.Read())
             {
-                adults += "<tr><td><h4>" + r2.GetString(1) + "</h4></br><h5>" + r2.GetString(2) + "</h5></br>" + r2.GetString(3) + "</br></td></tr>";
+                adults += "<tr><td><h4>" + r2.GetString(1) + "</h4></br><h5>" + r2.GetString(2) + "</h5></br>" + r2.GetString(3) + "</br><img src='"+Path.Combine(Server.MapPath("~"), "Pics", r2.GetString(6))+"'></img></br></td></tr>";
             }
             adults += "</table>";
             OleDbCommand Com3 = new OleDbCommand("SELECT * FROM Contacts", Con);
@@ -77,11 +81,34 @@ namespace Bet_Frankfurt_NewsLetter
                 message.IsBodyHtml = true;
                 c.Send(message);
             }
-            OleDbCommand e1 = new OleDbCommand("DELETE * FROM Children WHERE [month] = @month", Con);
+            IEnumerable<string> shit =  Directory.EnumerateFiles(Path.Combine(Server.MapPath("~"), "Pics" ));
+           foreach(string file in shit)
+           {
+            OleDbConnection p1 = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
+            p1.Open();
+            OleDbCommand p11 = new OleDbCommand("SELECT * FROM Adults WHERE [pic] = @f", Con);
+            p11.Parameters.Add("@f",OleDbType.WChar).Value=file.Split('/')[file.Split('/').Length-1];
+            OleDbDataReader rp11=p11.ExecuteReader();
+            if(!rp11.Read())
+            {
+                            OleDbConnection p2 = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
+                            p.Open();
+                             OleDbCommand p21 = new OleDbCommand("SELECT * FROM Children WHERE [pic] = @f", Con);
+                            p21.Parameters.Add("@f",OleDbType.WChar).Value=file.Split('/')[file.Split('/').Length-1];
+                            OleDbDataReader rp21=p11.ExecuteReader();
+                            if(!rp21.Read()) File.Delete(file);
+            }
+               
+           }
+            OleDbCommand e1 = new OleDbCommand("DELETE * FROM Children WHERE [month] = @month  AND [day] = @day", Con);
             e1.Parameters.Add("@month", OleDbType.Integer).Value = m;
+            e1.Parameters.Add("@day", OleDbType.Integer).Value = d;
+
             e1.ExecuteNonQuery();
-            OleDbCommand e2 = new OleDbCommand("DELETE * FROM Adults WHERE [month] = @month", Con);
+            OleDbCommand e2 = new OleDbCommand("DELETE * FROM Adults WHERE [month] = @month  AND [day] = @day", Con);
             e2.Parameters.Add("@month", OleDbType.Integer).Value = m;
+            e2.Parameters.Add("@day", OleDbType.Integer).Value = d;
+
             e2.ExecuteNonQuery();
             Con.Close();
         }
