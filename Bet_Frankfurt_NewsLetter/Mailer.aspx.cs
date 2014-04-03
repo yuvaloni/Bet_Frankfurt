@@ -95,7 +95,7 @@ namespace Bet_Frankfurt_NewsLetter
                             p2.Open();
                              OleDbCommand p21 = new OleDbCommand("SELECT * FROM Children WHERE [pic] = @f", Con);
                             p21.Parameters.Add("@f",OleDbType.WChar).Value=file.Split('/')[file.Split('/').Length-1];
-                            OleDbDataReader rp21=p11.ExecuteReader();
+                            OleDbDataReader rp21=p21.ExecuteReader();
                             if(!rp21.Read()) File.Delete(file);
             }
                
