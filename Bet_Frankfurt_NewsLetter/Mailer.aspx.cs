@@ -46,7 +46,7 @@ namespace Bet_Frankfurt_NewsLetter
             OleDbDataReader r = Com.ExecuteReader();
             while (r.Read())
             {
-                children += "<tr><td><h4>" + r.GetString(1) + "</h4></br><h5>" + r.GetString(2) + "</h5></br>" + r.GetString(3) + "</br><img src='http://betfrankufrtnewsletter.apphb.com/pics/"+r.GetString(6))+"'></img></br></td></tr>";
+                children += "<tr><td><h4>" + r.GetString(1) + "</h4></br><h5>" + r.GetString(2) + "</h5></br>" + r.GetString(3) + @"</br><img src='http://betfrankufrtnewsletter.apphb.com/pics/"+r.GetString(6)+"'></img></br></td></tr>";
             }
             children += "</table>";
             string adults = "<h3> אירועים למבוגרים </h3> </br> <table>";
@@ -92,7 +92,7 @@ namespace Bet_Frankfurt_NewsLetter
             if(!rp11.Read())
             {
                             OleDbConnection p2 = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
-                            p.Open();
+                            p2.Open();
                              OleDbCommand p21 = new OleDbCommand("SELECT * FROM Children WHERE [pic] = @f", Con);
                             p21.Parameters.Add("@f",OleDbType.WChar).Value=file.Split('/')[file.Split('/').Length-1];
                             OleDbDataReader rp21=p11.ExecuteReader();
