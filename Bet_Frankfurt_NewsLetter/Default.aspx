@@ -4,7 +4,7 @@
     <img src ="white.jpg" style="position:absolute;top:25%; height:45%; width:65%; left:17.5%;"/>
     <div style="position:absolute;layer:0; top:25%; left: 18%; height:45%; width:65%;">
 
-    <img src="Logo.jpg" style="width: 65%; height: 10%% ;position:absolute;" /></br>
+    <img src="Logo.jpg" style="width: width:65%; height: 113px" /></br>
     </br>
     שם מלא: <asp:TextBox ID="TextBox1"  CausesValidation = "false"  runat="server" Height="33px" OnTextChanged="TextBox1_TextChanged" AutoPostBack="True" Width="357px"></asp:TextBox>
     </br>
