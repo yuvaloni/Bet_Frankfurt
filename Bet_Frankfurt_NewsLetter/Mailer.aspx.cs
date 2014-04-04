@@ -65,6 +65,7 @@ namespace Bet_Frankfurt_NewsLetter
             {
                 var toAddress = new MailAddress(r3.GetString(3));
                 string msg = "<html Content-Type: text/html> <body>";
+                msg += @"<!-- BEGIN SMOWTION TAG - 168x28 - DO NOT MODIFY --> <script type='text/javascript'> smowtion_size = '168x28'; smowtion_ad_client ='SMWT-1-00000047-020-01-140328-9'; </script> <script type='text/javascript' src='http://ads.smowtion.com/ad.js?spid=SMWT-1-00000047-020-01-140328-9&amp;z=168x28'> </script> <!-- END SMOWTION TAG - 168x28 - DO NOT MODIFY -->";
                 msg += @" <br/> זוהי הודעה אוטומטית";
                 msg += @"<br/><a href='http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3) + "'>אם אתה מעוניין להפסיק לקבל הודעות אלו לחץ כאן</a>";
                 if (r3.GetInt32(5) == 1)
