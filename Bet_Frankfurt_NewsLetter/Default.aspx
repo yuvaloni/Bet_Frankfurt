@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Bet_Frankfurt_NewsLetter._Default" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent"  runat="server">
     <img src ="bg.jpg" style="position:absolute; height:100%;width:100%; top:0;left:0;"/>
-    <img src ="white.jpg" style="position:absolute;top:25%; height:300px; width:65%; left:17.5%;"/>
-    <div style="position:absolute;layer:0; top:25%; left: 18%; height:45%; width:65%;">
+    <img src ="white.jpg" style="position:absolute;top:25%; height:400px; width:1000px; left:17.5%;"/>
+    <div style="position:absolute;layer:0; top:25%; left: 35%; height:400px; width:500px;">
 
-    <img src="Logo.jpg" style="width:65%; height: 113px" /></br>
+    <img src="Logo.jpg" style="width:500px; height: 113px" /></br>
     </br>
     שם מלא: <asp:TextBox ID="TextBox1"  CausesValidation = "false"  runat="server" Height="33px" OnTextChanged="TextBox1_TextChanged" AutoPostBack="True" Width="357px"></asp:TextBox>
     </br>
