@@ -19,8 +19,8 @@
     <asp:CheckBox ID="CheckBox2" runat="server" Text ="אירועים לילדים"  />
     </br>
     </br>
-    </div>
     <asp:Button ID="Button1" runat="server" Text="תרשמו אותי!" OnClick="Button1_OnClick" />
+    </div>
 
 </asp:Content>
 
