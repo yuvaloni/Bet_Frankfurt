@@ -87,14 +87,14 @@ namespace Bet_Frankfurt_NewsLetter
             OleDbConnection p1 = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
             p1.Open();
             OleDbCommand p11 = new OleDbCommand("SELECT * FROM Adults WHERE [pic] = @f", Con);
-            p11.Parameters.Add("@f",OleDbType.WChar).Value=file.Split('/')[file.Split('/').Length-1];
+            p11.Parameters.Add("@f",OleDbType.WChar).Value=file.Split('\\')[file.Split('\\').Length-1];
             OleDbDataReader rp11=p11.ExecuteReader();
             if(!rp11.Read())
             {
                             OleDbConnection p2 = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
                             p2.Open();
                              OleDbCommand p21 = new OleDbCommand("SELECT * FROM Children WHERE [pic] = @f", Con);
-                            p21.Parameters.Add("@f",OleDbType.WChar).Value=file.Split('/')[file.Split('/').Length-1];
+                            p21.Parameters.Add("@f",OleDbType.WChar).Value=file.Split('\\')[file.Split('\\').Length-1];
                             OleDbDataReader rp21=p21.ExecuteReader();
                             if(!rp21.Read()) File.Delete(file);
             }
