@@ -2,7 +2,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent"  runat="server">
     <img src ="bg.jpg" style="position:absolute; height:100%; top:0;"/>
     <img src ="white.jpg" style="position:absolute;top:25%; height:45%; width:65%; left:17.5%;"/>
-    <div style="position:absolute;layer:0; top:25%; left: 18%;">
+    <div style="position:absolute;layer:0; top:25%; left: 18%; height:45%; width:65%;">
 
     <img src="Logo.jpg" style="width: 903px; height: 113px" /></br>
     </br>
