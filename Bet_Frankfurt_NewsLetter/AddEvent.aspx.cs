@@ -14,6 +14,7 @@ namespace Bet_Frankfurt_NewsLetter
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Directory.Exists(Path.Combine(Server.MapPath("~"), "Pics"))) Directory.CreateDirectory(Path.Combine(Server.MapPath("~"), "Pics"));
             if (Session["pass"] == null)
                 Response.Redirect("CPANEL.aspx");
             if(DropDownList1.Items.Count==0)
