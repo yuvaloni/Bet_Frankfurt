@@ -62,6 +62,7 @@ namespace Bet_Frankfurt_NewsLetter
             Random rnd = new Random();
             for (int i = 0; i < 5; i++)
                 f += s[rnd.Next(0, s.Length - 1)];
+            f += ".jpg";
             OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'"); 
             Con.Open();
             OleDbCommand Com = new OleDbCommand("INSERT INTO Adults ([event],[EventDate],[Description], [month], [day],[pic]) VALUES (@name, @date, @description,@month, @day,@file)", Con);
