@@ -17,6 +17,7 @@ namespace Bet_Frankfurt_NewsLetter
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            send();
         }
         public void send()
         {
