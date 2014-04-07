@@ -3,7 +3,7 @@
     <img src ="bg.jpg" style="position:absolute; height:100%;width:100%; top:0;left:0;"/>
     <img src ="white.jpg" style="position:absolute;top:25%; height:50%; width:75%; left:12.5%;"/>
         <img src="Logo.jpg"  style="position:absolute;width:65%; height: 15%; left:17.5%;top:25%" /></br>
-    <div style="position:absolute;layer:0; top:40%; left: 35%; height:45%px; width:65%;">
+    <div style="position:absolute;layer:0; top:40%; left: 35%; height:35%; width:65%;">
 
     </br>
     שם מלא: <asp:TextBox ID="TextBox1"  CausesValidation = "false"  runat="server" Height="7%" OnTextChanged="TextBox1_TextChanged" AutoPostBack="True" Width="50%"></asp:TextBox>

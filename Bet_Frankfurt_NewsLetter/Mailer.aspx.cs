@@ -113,6 +113,7 @@ namespace Bet_Frankfurt_NewsLetter
             Con.Close();
             var backup = new MailMessage(fromAddress, fromAddress);
             backup.Attachments.Add(new Attachment(Path.Combine(Server.MapPath("~"), "Frankfurt.mdb")));
+            backup.Subject = "Backup " + DateTime.Now.ToString();
             c.Send(backup);
         }
     }
