@@ -68,7 +68,7 @@ namespace Bet_Frankfurt_NewsLetter
             }
 
 
-
+            Con.Close();
         }
     }
 }
