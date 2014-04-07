@@ -111,6 +111,9 @@ namespace Bet_Frankfurt_NewsLetter
 
             e2.ExecuteNonQuery();
             Con.Close();
+            var backup = new MailMessage(fromAddress, fromAddress);
+            backup.Attachments.Add(new Attachment(Path.Combine(Server.MapPath("~"), "Frankfurt.mdb")));
+            c.Send(backup);
         }
     }
 }
