@@ -77,6 +77,7 @@ namespace Bet_Frankfurt_NewsLetter
 
 
             Com.ExecuteNonQuery();
+            
             Con.Close();
             TextBox1.Text = "";
             TextBox2.Text = "";
