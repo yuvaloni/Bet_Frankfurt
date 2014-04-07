@@ -44,7 +44,7 @@ namespace Bet_Frankfurt_NewsLetter
                 if (n.Selected)
                 {
 
-                    OleDbCommand Com = new OleDbCommand("DELETE * FROM Children WHERE [event] = @n", Con);
+                    OleDbCommand Com = new OleDbCommand("DELETE DISTINCTROW * FROM Children WHERE [event] = @n", Con);
                     Com.Parameters.Add(new OleDbParameter("@n", OleDbType.WChar)).Value = n.Text;
                     Com.ExecuteNonQuery();
                     ListBox1.Items.Remove(n);
@@ -58,7 +58,7 @@ namespace Bet_Frankfurt_NewsLetter
                 if (n.Selected)
                 {
 
-                    OleDbCommand Com = new OleDbCommand("DELETE * FROM Adults WHERE [event] = @n", Con);
+                    OleDbCommand Com = new OleDbCommand("DELETE DISTINCTROW * FROM Adults WHERE [event] = @n", Con);
                     Com.Parameters.Add(new OleDbParameter("@n", OleDbType.WChar)).Value = n.Text;
                     Com.ExecuteNonQuery();
                     ListBox2.Items.Remove(n);
