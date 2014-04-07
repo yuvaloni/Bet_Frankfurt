@@ -107,11 +107,11 @@ namespace Bet_Frankfurt_NewsLetter
             e2.ExecuteNonQuery();
             Con.Close();
             var backup = new MailMessage(fromAddress, fromAddress);
-            File.Copy(Path.Combine(Server.MapPath("~"), "Frankfurt.mdb"), Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
+            File.Copy(Path.Combine(Server.MapPath("~"), "Frankfurt.mdb"), Path.Combine(Server.MapPath("~"), "Backup.mdb"));
             backup.Attachments.Add(new Attachment(Path.Combine(Server.MapPath("~"), "BackUp.mdb")));
-
             backup.Subject = "Backup " + DateTime.Now.ToString();
             c.Send(backup);
+            backup.Attachments.Dispose();
             File.Delete(Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
             
         }
