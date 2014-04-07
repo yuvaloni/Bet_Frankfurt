@@ -55,7 +55,7 @@ namespace Bet_Frankfurt_NewsLetter
             OleDbDataReader r2 = Com2.ExecuteReader();
             while (r2.Read())
             {
-                adults += "<tr><td><h4>" + r2.GetString(1) + "</h4></br><h5>" + r2.GetString(2) + "</h5></br>" + r2.GetString(3) + "</br><img  src='http://betfrankufrtnewsletter.apphb.com/pics/" + r.GetString(6) + "'></img></br></td></tr>";
+                adults += "<tr><td><h4>" + r2.GetString(1) + "</h4></br><h5>" + r2.GetString(2) + "</h5></br>" + r2.GetString(3) + "</br><img  src='http://betfrankufrtnewsletter.apphb.com/pics/" + r2.GetString(6) + "'></img></br></td></tr>";
             }
             adults += "</table>";
             OleDbCommand Com3 = new OleDbCommand("SELECT * FROM Contacts", Con);
