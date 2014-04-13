@@ -114,6 +114,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="People.aspx" />
     <Content Include="White.jpg" />
     <None Include="Properties\PublishProfiles\bet frankfurt.pubxml" />
     <None Include="Properties\PublishProfiles\Yuval Arad.pubxml" />
@@ -205,6 +206,13 @@
     </Compile>
     <Compile Include="Mailer.aspx.designer.cs">
       <DependentUpon>Mailer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="People.aspx.cs">
+      <DependentUpon>People.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="People.aspx.designer.cs">
+      <DependentUpon>People.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoveMe.aspx.cs">

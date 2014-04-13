@@ -16,6 +16,7 @@
         <asp:TextBox ID="TextBox1" runat="server" TextMode="Password"></asp:TextBox>
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="הוסף אירועים" />
         <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="מחק אירועים" />
+        <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="ניהול אנשי קשר" />
     </form>
 </body>
 </html>
