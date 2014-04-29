@@ -42,12 +42,12 @@ namespace Bet_Frankfurt_NewsLetter
             OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"),"Frankfurt.mdb") + "'"); 
             Con.Open();
             OleDbCommand Com = new OleDbCommand("INSERT INTO Children ([event],[EventDate],[Description],[month],[day],[pic]) VALUES (@name, @date, @description, @month, @day,@file)", Con);
-            Com.Parameters.Add("@name", OleDbType.WChar).Value = TextBox1.Text;
-            Com.Parameters.Add("@date", OleDbType.WChar).Value = TextBox2.Text;
-            Com.Parameters.Add("@description", OleDbType.WChar).Value = TextBox3.Text;
+            Com.Parameters.Add("@name", OleDbType.LongVarWChar).Value = TextBox1.Text;
+            Com.Parameters.Add("@date", OleDbType.LongVarWChar).Value = TextBox2.Text;
+            Com.Parameters.Add("@description", OleDbType.LongVarWChar).Value = TextBox3.Text;
             Com.Parameters.Add("@month",OleDbType.Integer).Value=DropDownList1.SelectedItem.Value;
             Com.Parameters.Add("@day", OleDbType.Integer).Value = DropDownList2.SelectedItem.Value;
-            Com.Parameters.Add("@file", OleDbType.WChar).Value = f;
+            Com.Parameters.Add("@file", OleDbType.LongVarWChar).Value = f;
             File.WriteAllBytes(Path.Combine(Server.MapPath("~"), "Pics", f),FileUpload1.FileBytes);
 
             Com.ExecuteNonQuery();
@@ -67,12 +67,12 @@ namespace Bet_Frankfurt_NewsLetter
             OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'"); 
             Con.Open();
             OleDbCommand Com = new OleDbCommand("INSERT INTO Adults ([event],[EventDate],[Description], [month], [day],[pic]) VALUES (@name, @date, @description,@month, @day,@file)", Con);
-            Com.Parameters.Add("@name", OleDbType.WChar).Value = TextBox1.Text;
-            Com.Parameters.Add("@date", OleDbType.WChar).Value = TextBox2.Text;
-            Com.Parameters.Add("@description", OleDbType.WChar).Value = TextBox3.Text;
+            Com.Parameters.Add("@name", OleDbType.LongVarWChar).Value = TextBox1.Text;
+            Com.Parameters.Add("@date", OleDbType.LongVarWChar).Value = TextBox2.Text;
+            Com.Parameters.Add("@description", OleDbType.LongVarWChar).Value = TextBox3.Text;
             Com.Parameters.Add("@month", OleDbType.Integer).Value = DropDownList1.SelectedItem.Value;
             Com.Parameters.Add("@day", OleDbType.Integer).Value = DropDownList2.SelectedItem.Value;
-            Com.Parameters.Add("@file", OleDbType.WChar).Value = f;
+            Com.Parameters.Add("@file", OleDbType.LongVarWChar).Value = f;
             File.WriteAllBytes(Path.Combine(Server.MapPath("~"), "Pics", f), FileUpload1.FileBytes);
 
 
