@@ -42,7 +42,8 @@ namespace Bet_Frankfurt_NewsLetter
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
             };
-            OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");      
+            OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
+            Con.Open();
             OleDbCommand Com3 = new OleDbCommand("SELECT * FROM Contacts", Con);
             OleDbDataReader r3 = Com3.ExecuteReader();
             while (r3.Read())
@@ -75,6 +76,8 @@ namespace Bet_Frankfurt_NewsLetter
             c.Send(backup);
             backup.Attachments.Dispose();
             File.Delete(Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
+            TextBox1.Text = "";
+            TextBox2.Text = "";
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -98,6 +101,7 @@ namespace Bet_Frankfurt_NewsLetter
                 Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
             };
             OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
+            Con.Open();
             OleDbCommand Com3 = new OleDbCommand("SELECT * FROM Contacts", Con);
             OleDbDataReader r3 = Com3.ExecuteReader();
             while (r3.Read())
@@ -130,6 +134,8 @@ namespace Bet_Frankfurt_NewsLetter
             c.Send(backup);
             backup.Attachments.Dispose();
             File.Delete(Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
+            TextBox1.Text = "";
+            TextBox2.Text = "";
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -152,7 +158,8 @@ namespace Bet_Frankfurt_NewsLetter
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
             };
-            OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
+             OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
+             Con.Open();
             OleDbCommand Com3 = new OleDbCommand("SELECT * FROM Contacts", Con);
             OleDbDataReader r3 = Com3.ExecuteReader();
             while (r3.Read())
@@ -182,6 +189,8 @@ namespace Bet_Frankfurt_NewsLetter
             c.Send(backup);
             backup.Attachments.Dispose();
             File.Delete(Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
+            TextBox1.Text = "";
+            TextBox2.Text = "";
         }
     }
 }
