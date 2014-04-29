@@ -48,7 +48,7 @@ namespace Bet_Frankfurt_NewsLetter
             OleDbDataReader r3 = Com3.ExecuteReader();
             while (r3.Read())
             {
-                if (r3.GetInt32(5) == 1)
+                if (r3.GetInt32(5) == 1 && !r3.IsDBNull(3))
                 {
 
                     var toAddress = new MailAddress(r3.GetString(3));
@@ -106,7 +106,7 @@ namespace Bet_Frankfurt_NewsLetter
             OleDbDataReader r3 = Com3.ExecuteReader();
             while (r3.Read())
             {
-                if (r3.GetInt32(6) == 1)
+                if (r3.GetInt32(6) == 1 && !r3.IsDBNull(3))
                 {
 
                     var toAddress = new MailAddress(r3.GetString(3));
@@ -164,7 +164,8 @@ namespace Bet_Frankfurt_NewsLetter
             OleDbDataReader r3 = Com3.ExecuteReader();
             while (r3.Read())
             {
-
+                if (!r3.IsDBNull(3))
+                {
                     var toAddress = new MailAddress(r3.GetString(3));
                     string msg = "<html Content-Type: text/html> <body>";
                     msg += @" <br/> זוהי הודעה אוטומטית";
@@ -180,6 +181,7 @@ namespace Bet_Frankfurt_NewsLetter
                     };
                     message.IsBodyHtml = true;
                     c.Send(message);
+                }
             }
             Con.Close();
             var backup = new MailMessage(fromAddress, fromAddress);
