@@ -50,6 +50,18 @@ namespace Bet_Frankfurt_NewsLetter
             else
                 Response.Write("סיסמה שגויה");
         }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            if (TextBox1.Text == "Alumot12")
+            {
+                Session["pass"] = "yes";
+                Response.Redirect("Message.aspx");
+
+            }
+            else
+                Response.Write("סיסמה שגויה");
+        }
         }
         }
  

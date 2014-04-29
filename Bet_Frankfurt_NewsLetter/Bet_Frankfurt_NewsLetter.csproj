@@ -110,6 +110,7 @@
     <Content Include="Frankfurt.mdb" />
     <Content Include="Logo.jpg" />
     <Content Include="Mailer.aspx" />
+    <Content Include="Message.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -206,6 +207,13 @@
     </Compile>
     <Compile Include="Mailer.aspx.designer.cs">
       <DependentUpon>Mailer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Message.aspx.cs">
+      <DependentUpon>Message.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Message.aspx.designer.cs">
+      <DependentUpon>Message.aspx</DependentUpon>
     </Compile>
     <Compile Include="People.aspx.cs">
       <DependentUpon>People.aspx</DependentUpon>

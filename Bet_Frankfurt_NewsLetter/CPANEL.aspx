@@ -17,6 +17,7 @@
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="הוסף אירועים" />
         <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="מחק אירועים" />
         <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="ניהול אנשי קשר" />
+        <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="שליחת הודעה" />
     </form>
 </body>
 </html>
