@@ -62,24 +62,31 @@ namespace Bet_Frankfurt_NewsLetter
             OleDbDataReader r3 = Com3.ExecuteReader();
             while (r3.Read())
             {
-                var toAddress = new MailAddress(r3.GetString(3));
-                string msg = "<html Content-Type: text/html> <body>";
-                msg += @" <br/> זוהי הודעה אוטומטית";
-                msg += @"<br/><a href='http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3) + "'>אם אתה מעוניין להפסיק לקבל הודעות אלו לחץ כאן</a>";
-                msg += @"</br> או העתק את הכתובת הבאה לשורת הדפדפן: http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3);
-                if (r3.GetInt32(5) == 1)
-                    msg += children;
-                msg += "</br>";
-                if (r3.GetInt32(6) == 1)
-                    msg += adults;
-                msg += "</body></html>";
-                var message = new MailMessage(fromAddress, toAddress)
+                try
                 {
-                    Subject = "ניוזלטר מבית פרנקפורט",
-                    Body = msg
-                };
-                message.IsBodyHtml = true;
-                c.Send(message);
+                    var toAddress = new MailAddress(r3.GetString(3));
+                    string msg = "<html Content-Type: text/html> <body>";
+                    msg += @" <br/> זוהי הודעה אוטומטית";
+                    msg += @"<br/><a href='http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3) + "'>אם אתה מעוניין להפסיק לקבל הודעות אלו לחץ כאן</a>";
+                    msg += @"</br> או העתק את הכתובת הבאה לשורת הדפדפן: http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3);
+                    if (r3.GetInt32(5) == 1)
+                        msg += children;
+                    msg += "</br>";
+                    if (r3.GetInt32(6) == 1)
+                        msg += adults;
+                    msg += "</body></html>";
+                    var message = new MailMessage(fromAddress, toAddress)
+                    {
+                        Subject = "ניוזלטר מבית פרנקפורט",
+                        Body = msg
+                    };
+                    message.IsBodyHtml = true;
+                    c.Send(message);
+                } 
+                catch
+                {
+
+                }
             }
             IEnumerable<string> shit =  Directory.EnumerateFiles(Path.Combine(Server.MapPath("~"), "Pics" ));
            foreach(string file in shit)
