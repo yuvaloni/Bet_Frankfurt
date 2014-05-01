@@ -48,24 +48,32 @@ namespace Bet_Frankfurt_NewsLetter
             OleDbDataReader r3 = Com3.ExecuteReader();
             while (r3.Read())
             {
-                if (r3.GetInt32(5) == 1 && !r3.IsDBNull(3))
+                try
                 {
 
-                    var toAddress = new MailAddress(r3.GetString(3));
-                    string msg = "<html Content-Type: text/html> <body>";
-                    msg += @" <br/> זוהי הודעה אוטומטית";
-                    msg += @"<br/><a href='http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3) + "'>אם אתה מעוניין להפסיק לקבל הודעות אלו לחץ כאן</a>";
-                    msg += @"<br/> או העתק את הכתובת הבאה לשורת הדפדפן: http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3);
-                    msg += @"<br/><h3>" + TextBox1.Text + "</h3>";
-                    msg += @"<br/>" + TextBox2.Text;
-                    msg += @"<br/><img  src='http://betfrankufrtnewsletter.apphb.com/pics/" +f + "'></img>";
-                    var message = new MailMessage(fromAddress, toAddress)
+                    if (r3.GetInt32(5) == 1 && !r3.IsDBNull(3))
                     {
-                        Subject = TextBox1.Text,
-                        Body = msg
-                    };
-                    message.IsBodyHtml = true;
-                    c.Send(message);
+
+                        var toAddress = new MailAddress(r3.GetString(3));
+                        string msg = "<html Content-Type: text/html> <body>";
+                        msg += @" <br/> זוהי הודעה אוטומטית";
+                        msg += @"<br/><a href='http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3) + "'>אם אתה מעוניין להפסיק לקבל הודעות אלו לחץ כאן</a>";
+                        msg += @"<br/> או העתק את הכתובת הבאה לשורת הדפדפן: http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3);
+                        msg += @"<br/><h3>" + TextBox1.Text + "</h3>";
+                        msg += @"<br/>" + TextBox2.Text;
+                        msg += @"<br/><img  src='http://betfrankufrtnewsletter.apphb.com/pics/" + f + "'></img>";
+                        var message = new MailMessage(fromAddress, toAddress)
+                        {
+                            Subject = TextBox1.Text,
+                            Body = msg
+                        };
+                        message.IsBodyHtml = true;
+                        c.Send(message);
+                    }
+                }
+                catch
+                {
+
                 }
             }
             Con.Close();
@@ -106,25 +114,29 @@ namespace Bet_Frankfurt_NewsLetter
             OleDbDataReader r3 = Com3.ExecuteReader();
             while (r3.Read())
             {
-                if (r3.GetInt32(6) == 1 && !r3.IsDBNull(3))
+                try
                 {
-
-                    var toAddress = new MailAddress(r3.GetString(3));
-                    string msg = "<html Content-Type: text/html> <body>";
-                    msg += @" <br/> זוהי הודעה אוטומטית";
-                    msg += @"<br/><a href='http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3) + "'>אם אתה מעוניין להפסיק לקבל הודעות אלו לחץ כאן</a>";
-                    msg += @"<br/> או העתק את הכתובת הבאה לשורת הדפדפן: http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3);
-                    msg += @"<br/><h3>" + TextBox1.Text + "</h3>";
-                    msg += @"<br/>" + TextBox2.Text;
-                    msg += @"<br/><img  src='http://betfrankufrtnewsletter.apphb.com/pics/" + f + "'></img>";
-                    var message = new MailMessage(fromAddress, toAddress)
+                    if (r3.GetInt32(6) == 1 && !r3.IsDBNull(3))
                     {
-                        Subject = TextBox1.Text,
-                        Body = msg
-                    };
-                    message.IsBodyHtml = true;
-                    c.Send(message);
+
+                        var toAddress = new MailAddress(r3.GetString(3));
+                        string msg = "<html Content-Type: text/html> <body>";
+                        msg += @" <br/> זוהי הודעה אוטומטית";
+                        msg += @"<br/><a href='http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3) + "'>אם אתה מעוניין להפסיק לקבל הודעות אלו לחץ כאן</a>";
+                        msg += @"<br/> או העתק את הכתובת הבאה לשורת הדפדפן: http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3);
+                        msg += @"<br/><h3>" + TextBox1.Text + "</h3>";
+                        msg += @"<br/>" + TextBox2.Text;
+                        msg += @"<br/><img  src='http://betfrankufrtnewsletter.apphb.com/pics/" + f + "'></img>";
+                        var message = new MailMessage(fromAddress, toAddress)
+                        {
+                            Subject = TextBox1.Text,
+                            Body = msg
+                        };
+                        message.IsBodyHtml = true;
+                        c.Send(message);
+                    }
                 }
+                catch { }
             }
             Con.Close();
             var backup = new MailMessage(fromAddress, fromAddress);
@@ -164,6 +176,7 @@ namespace Bet_Frankfurt_NewsLetter
             OleDbDataReader r3 = Com3.ExecuteReader();
             while (r3.Read())
             {
+                try { 
                 if (!r3.IsDBNull(3))
                 {
                     var toAddress = new MailAddress(r3.GetString(3));
@@ -182,6 +195,10 @@ namespace Bet_Frankfurt_NewsLetter
                     message.IsBodyHtml = true;
                     c.Send(message);
                 }
+                    ]
+                    catch{
+
+                    }
             }
             Con.Close();
             var backup = new MailMessage(fromAddress, fromAddress);
