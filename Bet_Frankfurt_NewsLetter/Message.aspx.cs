@@ -31,11 +31,11 @@ namespace Bet_Frankfurt_NewsLetter
                 f += s[rnd.Next(0, s.Length - 1)];
             f += ".jpg";
             File.WriteAllBytes(Path.Combine(Server.MapPath("~"), "Pics", f), FileUpload1.FileBytes);
-            var fromAddress = new MailAddress("bet.frankfurt@walla.co.il", "בית פרנקפורט");
-            const string fromPassword = "1a2b3c!?!?";
+            var fromAddress = new MailAddress("bet.frankfurt.newsletter@gmail.com", "בית פרנקפורט");
+            const string fromPassword = "1wJxMrhhBGwKxk2HNkk_xQ";
             SmtpClient c = new SmtpClient
             {
-                Host = "out.walla.co.il",
+                Host = "smtp.mandrillapp.com",
                 Port = 587,
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
@@ -98,17 +98,17 @@ namespace Bet_Frankfurt_NewsLetter
                 f += s[rnd.Next(0, s.Length - 1)];
             f += ".jpg";
             File.WriteAllBytes(Path.Combine(Server.MapPath("~"), "Pics", f), FileUpload1.FileBytes);
-            var fromAddress = new MailAddress("bet.frankfurt@walla.co.il", "בית פרנקפורט");
-            const string fromPassword = "1a2b3c!?!?";
+            var fromAddress = new MailAddress("bet.frankfurt.newsletter@gmail.com", "בית פרנקפורט");
+            const string fromPassword = "1wJxMrhhBGwKxk2HNkk_xQ";
             SmtpClient c = new SmtpClient
             {
-                Host = "out.walla.co.il",
+                Host = "smtp.mandrillapp.com",
                 Port = 587,
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-            };  
+            }; 
             OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
             Con.Open();
             OleDbCommand Com3 = new OleDbCommand("SELECT * FROM Contacts", Con);
@@ -161,11 +161,11 @@ namespace Bet_Frankfurt_NewsLetter
                 f += s[rnd.Next(0, s.Length - 1)];
             f += ".jpg";
             File.WriteAllBytes(Path.Combine(Server.MapPath("~"), "Pics", f), FileUpload1.FileBytes);
-            var fromAddress = new MailAddress("bet.frankfurt@walla.co.il", "בית פרנקפורט");
-            const string fromPassword = "1a2b3c!?!?";
+            var fromAddress = new MailAddress("bet.frankfurt.newsletter@gmail.com", "בית פרנקפורט");
+            const string fromPassword = "1wJxMrhhBGwKxk2HNkk_xQ";
             SmtpClient c = new SmtpClient
             {
-                Host = "out.walla.co.il",
+                Host = "smtp.mandrillapp.com",
                 Port = 587,
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,

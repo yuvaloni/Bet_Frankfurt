@@ -23,19 +23,19 @@ namespace Bet_Frankfurt_NewsLetter
         public void send()
         {
 
-            var fromAddress = new MailAddress("bet.frankfurt@walla.co.il", "בית פרנקפורט");
-            const string fromPassword = "1a2b3c!?!?";
             int m = DateTime.Now.Month;
             int d = DateTime.Now.Day >= 15 ? 15 : 1;
+            var fromAddress = new MailAddress("bet.frankfurt.newsletter@gmail.com", "בית פרנקפורט");
+            const string fromPassword = "1wJxMrhhBGwKxk2HNkk_xQ";
             SmtpClient c = new SmtpClient
             {
-                Host = "out.walla.co.il",
+                Host = "smtp.mandrillapp.com",
                 Port = 587,
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-            };
+            }; 
             OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
             Con.Open();
             string children = "<h3> אירועים לילדים </h3> </br> <table>";
