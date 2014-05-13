@@ -31,11 +31,11 @@ namespace Bet_Frankfurt_NewsLetter
                 f += s[rnd.Next(0, s.Length - 1)];
             f += ".jpg";
             File.WriteAllBytes(Path.Combine(Server.MapPath("~"), "Pics", f), FileUpload1.FileBytes);
-            var fromAddress = new MailAddress("bet.frankfurt@outlook.com", "בית פרנקפורט");
+            var fromAddress = new MailAddress("bet.frankfurt.newsletter@gmail.com", "בית פרנקפורט");
             const string fromPassword = "1a2b3c!?!?";
             SmtpClient c = new SmtpClient
             {
-                Host = "smtp.live.com",
+                Host = "smtp.gmail.com",
                 Port = 587,
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
@@ -98,11 +98,11 @@ namespace Bet_Frankfurt_NewsLetter
                 f += s[rnd.Next(0, s.Length - 1)];
             f += ".jpg";
             File.WriteAllBytes(Path.Combine(Server.MapPath("~"), "Pics", f), FileUpload1.FileBytes);
-            var fromAddress = new MailAddress("bet.frankfurt@outlook.com", "בית פרנקפורט");
+            var fromAddress = new MailAddress("bet.frankfurt.newsletter@gmail.com", "בית פרנקפורט");
             const string fromPassword = "1a2b3c!?!?";
             SmtpClient c = new SmtpClient
             {
-                Host = "smtp.live.com",
+                Host = "smtp.gmail.com",
                 Port = 587,
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
@@ -161,18 +161,18 @@ namespace Bet_Frankfurt_NewsLetter
                 f += s[rnd.Next(0, s.Length - 1)];
             f += ".jpg";
             File.WriteAllBytes(Path.Combine(Server.MapPath("~"), "Pics", f), FileUpload1.FileBytes);
-            var fromAddress = new MailAddress("bet.frankfurt@outlook.com", "בית פרנקפורט");
+            var fromAddress = new MailAddress("bet.frankfurt.newsletter@gmail.com", "בית פרנקפורט");
             const string fromPassword = "1a2b3c!?!?";
             SmtpClient c = new SmtpClient
             {
-                Host = "smtp.live.com",
+                Host = "smtp.gmail.com",
                 Port = 587,
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-            }; 
-            OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
+            };
+             OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
              Con.Open();
             OleDbCommand Com3 = new OleDbCommand("SELECT * FROM Contacts", Con);
             OleDbDataReader r3 = Com3.ExecuteReader();
@@ -215,11 +215,6 @@ namespace Bet_Frankfurt_NewsLetter
             TextBox1.Text = "";
             TextBox2.Text = "";
             c.Dispose();
-        }
-
-        protected void TextBox2_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
