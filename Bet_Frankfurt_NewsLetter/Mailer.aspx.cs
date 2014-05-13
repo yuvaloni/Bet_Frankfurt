@@ -23,13 +23,13 @@ namespace Bet_Frankfurt_NewsLetter
         public void send()
         {
 
-            var fromAddress = new MailAddress("bet.frankfurt.newsletter@gmail.com", "בית פרנקפורט");
+            var fromAddress = new MailAddress("bet.frankfurt@walla.co.il", "בית פרנקפורט");
             const string fromPassword = "1a2b3c!?!?";
             int m = DateTime.Now.Month;
             int d = DateTime.Now.Day >= 15 ? 15 : 1;
             SmtpClient c = new SmtpClient
             {
-                Host = "smtp.gmail.com",
+                Host = "out.walla.co.il",
                 Port = 587,
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
