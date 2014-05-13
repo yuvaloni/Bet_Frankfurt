@@ -35,7 +35,15 @@ namespace Bet_Frankfurt_NewsLetter
             };
             int m = DateTime.Now.Month;
             int d = DateTime.Now.Day >= 15 ? 15 : 1;
-
+            SmtpClient c = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
             OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
             Con.Open();
             string children = "<h3> אירועים לילדים </h3> </br> <table>";

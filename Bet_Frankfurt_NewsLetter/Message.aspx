@@ -12,7 +12,7 @@
     
         נושא:<asp:TextBox ID="TextBox1" runat="server" Width="574px"></asp:TextBox>
         <br />
-        גוף ההודעה:<asp:TextBox ID="TextBox2" runat="server" Height="246px" TextMode="MultiLine" Width="574px"></asp:TextBox>
+        גוף ההודעה:<asp:TextBox ID="TextBox2" runat="server" Height="246px" TextMode="MultiLine" Width="574px" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
         <br />
         <br />
         <br />
