@@ -22,17 +22,9 @@ namespace Bet_Frankfurt_NewsLetter
         }
         public void send()
         {
-            var fromAddress = new MailAddress("bet.frankfurt@outlook.com", "בית פרנקפורט");
+
+            var fromAddress = new MailAddress("bet.frankfurt.newsletter@gmail.com", "בית פרנקפורט");
             const string fromPassword = "1a2b3c!?!?";
-            SmtpClient c = new SmtpClient
-            {
-                Host = "smtp.live.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-            };
             int m = DateTime.Now.Month;
             int d = DateTime.Now.Day >= 15 ? 15 : 1;
             SmtpClient c = new SmtpClient
