@@ -41,7 +41,7 @@ namespace Bet_Frankfurt_NewsLetter
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-            };
+            }; 
             OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
             Con.Open();
             OleDbCommand Com3 = new OleDbCommand("SELECT * FROM Contacts", Con);
@@ -108,7 +108,7 @@ namespace Bet_Frankfurt_NewsLetter
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-            };
+            }; 
             OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
             Con.Open();
             OleDbCommand Com3 = new OleDbCommand("SELECT * FROM Contacts", Con);
@@ -171,8 +171,8 @@ namespace Bet_Frankfurt_NewsLetter
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-            };
-             OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
+            }; 
+            OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
              Con.Open();
             OleDbCommand Com3 = new OleDbCommand("SELECT * FROM Contacts", Con);
             OleDbDataReader r3 = Com3.ExecuteReader();
@@ -215,6 +215,11 @@ namespace Bet_Frankfurt_NewsLetter
             TextBox1.Text = "";
             TextBox2.Text = "";
             c.Dispose();
+        }
+
+        protected void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
