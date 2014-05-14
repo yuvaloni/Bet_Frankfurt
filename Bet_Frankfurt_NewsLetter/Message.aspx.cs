@@ -57,11 +57,12 @@ namespace Bet_Frankfurt_NewsLetter
                         var toAddress = new MailAddress(r3.GetString(3));
                         string msg = "<html Content-Type: text/html> <body>";
                         msg += @" <br/> זוהי הודעה אוטומטית";
-                        msg += @"<br/><a href='http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3) + "'>אם אתה מעוניין להפסיק לקבל הודעות אלו לחץ כאן</a>";
-                        msg += @"<br/> או העתק את הכתובת הבאה לשורת הדפדפן: http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3);
+                        msg += @"<br/><a href='http://betfrankufrtnewsletter.apphb.com/removeme?user=" + r3.GetString(3) + "'>אם אתה מעוניין להפסיק לקבל הודעות אלו לחץ כאן</a>";
+                        msg += @"<br/> או העתק את הכתובת הבאה לשורת הדפדפן: http://betfrankufrtnewsletter.apphb.com/removeme?user=" + r3.GetString(3);
                         msg += @"<br/><h3>" + TextBox1.Text + "</h3>";
                         msg += @"<br/>" + TextBox2.Text;
                         msg += @"<br/><img  src='http://betfrankufrtnewsletter.apphb.com/pics/" + f + "'></img>";
+                        msg += @"</body></html>";
                         var message = new MailMessage(fromAddress, toAddress)
                         {
                             Subject = TextBox1.Text,
@@ -78,7 +79,7 @@ namespace Bet_Frankfurt_NewsLetter
             }
             Con.Close();
             var backup = new MailMessage(fromAddress, fromAddress);
-            File.Copy(Path.Combine(Server.MapPath("~"), "Frankfurt.mdb"), Path.Combine(Server.MapPath("~"), "Backup.mdb"));
+            File.Copy(Path.Combine(Server.MapPath("~"), "Frankfurt.mdb"), Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
             backup.Attachments.Add(new Attachment(Path.Combine(Server.MapPath("~"), "BackUp.mdb")));
             backup.Subject = "Backup " + DateTime.Now.ToString();
             c.Send(backup);
@@ -86,7 +87,6 @@ namespace Bet_Frankfurt_NewsLetter
             File.Delete(Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
             TextBox1.Text = "";
             TextBox2.Text = "";
-            c.Dispose();
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -123,16 +123,18 @@ namespace Bet_Frankfurt_NewsLetter
                         var toAddress = new MailAddress(r3.GetString(3));
                         string msg = "<html Content-Type: text/html> <body>";
                         msg += @" <br/> זוהי הודעה אוטומטית";
-                        msg += @"<br/><a href='http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3) + "'>אם אתה מעוניין להפסיק לקבל הודעות אלו לחץ כאן</a>";
-                        msg += @"<br/> או העתק את הכתובת הבאה לשורת הדפדפן: http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3);
+                        msg += @"<br/><a href='http://betfrankufrtnewsletter.apphb.com/removeme?user=" + r3.GetString(3) + "'>אם אתה מעוניין להפסיק לקבל הודעות אלו לחץ כאן</a>";
+                        msg += @"<br/> או העתק את הכתובת הבאה לשורת הדפדפן: http://betfrankufrtnewsletter.apphb.com/removeme?user=" + r3.GetString(3);
                         msg += @"<br/><h3>" + TextBox1.Text + "</h3>";
                         msg += @"<br/>" + TextBox2.Text;
                         msg += @"<br/><img  src='http://betfrankufrtnewsletter.apphb.com/pics/" + f + "'></img>";
+                        msg += @"</body></html>";
                         var message = new MailMessage(fromAddress, toAddress)
                         {
                             Subject = TextBox1.Text,
                             Body = msg
                         };
+                        
                         message.IsBodyHtml = true;
                         c.Send(message);
                     }
@@ -141,7 +143,7 @@ namespace Bet_Frankfurt_NewsLetter
             }
             Con.Close();
             var backup = new MailMessage(fromAddress, fromAddress);
-            File.Copy(Path.Combine(Server.MapPath("~"), "Frankfurt.mdb"), Path.Combine(Server.MapPath("~"), "Backup.mdb"));
+            File.Copy(Path.Combine(Server.MapPath("~"), "Frankfurt.mdb"), Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
             backup.Attachments.Add(new Attachment(Path.Combine(Server.MapPath("~"), "BackUp.mdb")));
             backup.Subject = "Backup " + DateTime.Now.ToString();
             c.Send(backup);
@@ -149,7 +151,6 @@ namespace Bet_Frankfurt_NewsLetter
             File.Delete(Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
             TextBox1.Text = "";
             TextBox2.Text = "";
-            c.Dispose();
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -185,11 +186,12 @@ namespace Bet_Frankfurt_NewsLetter
                         var toAddress = new MailAddress(r3.GetString(3));
                         string msg = "<html Content-Type: text/html> <body>";
                         msg += @" <br/> זוהי הודעה אוטומטית";
-                        msg += @"<br/><a href='http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3) + "'>אם אתה מעוניין להפסיק לקבל הודעות אלו לחץ כאן</a>";
-                        msg += @"<br/> או העתק את הכתובת הבאה לשורת הדפדפן: http://betfrankufrtnewsletter.apphb.com\/removeme?user=" + r3.GetString(3);
+                        msg += @"<br/><a href='http://betfrankufrtnewsletter.apphb.com/removeme?user=" + r3.GetString(3) + "'>אם אתה מעוניין להפסיק לקבל הודעות אלו לחץ כאן</a>";
+                        msg += @"<br/> או העתק את הכתובת הבאה לשורת הדפדפן: http://betfrankufrtnewsletter.apphb.com/removeme?user=" + r3.GetString(3);
                         msg += @"<br/><h3>" + TextBox1.Text + "</h3>";
                         msg += @"<br/>" + TextBox2.Text;
                         msg += @"<br/><img  src='http://betfrankufrtnewsletter.apphb.com/pics/" + f + "'></img>";
+                        msg += @"</body></html>";
                         var message = new MailMessage(fromAddress, toAddress)
                         {
                             Subject = TextBox1.Text,
@@ -206,7 +208,7 @@ namespace Bet_Frankfurt_NewsLetter
             }
             Con.Close();
             var backup = new MailMessage(fromAddress, fromAddress);
-            File.Copy(Path.Combine(Server.MapPath("~"), "Frankfurt.mdb"), Path.Combine(Server.MapPath("~"), "Backup.mdb"));
+            File.Copy(Path.Combine(Server.MapPath("~"), "Frankfurt.mdb"), Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
             backup.Attachments.Add(new Attachment(Path.Combine(Server.MapPath("~"), "BackUp.mdb")));
             backup.Subject = "Backup " + DateTime.Now.ToString();
             c.Send(backup);
@@ -214,7 +216,6 @@ namespace Bet_Frankfurt_NewsLetter
             File.Delete(Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
             TextBox1.Text = "";
             TextBox2.Text = "";
-            c.Dispose();
         }
 
         protected void TextBox2_TextChanged(object sender, EventArgs e)
