@@ -85,13 +85,13 @@ namespace Bet_Frankfurt_NewsLetter
                     };
                     message.IsBodyHtml = true;
                     c.Send(message);
-                    r3.Close();
                 } 
                 catch
                 {
 
                 }
             }
+            r3.Close();
             IEnumerable<string> shit =  Directory.EnumerateFiles(Path.Combine(Server.MapPath("~"), "Pics" ));
            foreach(string file in shit)
            {
