@@ -124,4 +124,3 @@ namespace Bet_Frankfurt_NewsLetter
         }
     }
 }
-//shit

@@ -40,7 +40,7 @@ namespace Bet_Frankfurt_NewsLetter
             for (int i = 0; i < 5; i++)
                 f += s[rnd.Next(0, s.Length - 1)];
             f += ".jpg";
-            SqlConnection Con = new SqlConnection(@"Provider=Microsoft.Jet.Sql.4.0;Data Source='" + Path.Combine(Server.MapPath("~"),"Frankfurt.mdb") + "'"); 
+            SqlConnection Con = new SqlConnection(@"Data Source=4d0a9a5b-3c6c-457c-b6e4-a32b012a926d.sqlserver.sequelizer.com;Initial Catalog=db4d0a9a5b3c6c457cb6e4a32b012a926d;Persist Security Info=True;User ID=vjyfbkussiygpjsr;Password=3ELEn7FUzjJEgnqRKdYNbfUgTNKoWgvfj2iRjVA2XnU3WrLDdoMGFcNVTDUFvr6s");
             Con.Open();
             SqlCommand Com = new SqlCommand("INSERT INTO Children ([event],[EventDate],[Description],[month],[day],[pic]) VALUES (@name, @date, @description, @month, @day,@file)", Con);
             Com.Parameters.Add("@name", SqlDbType.NVarChar).Value = TextBox1.Text;

@@ -58,7 +58,7 @@ namespace Bet_Frankfurt_NewsLetter
                     string Last = TextBox1.Text.Split(' ')[1];
                     string Phone = TextBox3.Text;
                     string Email = TextBox2.Text;
-                    SqlConnection Con = new SqlConnection(@"Provider=Microsoft.Jet.Sql.4.0;Data Source='"+Path.Combine(Server.MapPath("~"),"Frankfurt.mdb")+"'");
+                    SqlConnection Con = new SqlConnection(@"Data Source=4d0a9a5b-3c6c-457c-b6e4-a32b012a926d.sqlserver.sequelizer.com;Initial Catalog=db4d0a9a5b3c6c457cb6e4a32b012a926d;Persist Security Info=True;User ID=vjyfbkussiygpjsr;Password=3ELEn7FUzjJEgnqRKdYNbfUgTNKoWgvfj2iRjVA2XnU3WrLDdoMGFcNVTDUFvr6s"); 
                     Con.Open();
                     SqlCommand Com = new SqlCommand("INSERT INTO Contacts ([first],[last],[phone],[email], [children], [adults]) VALUES (@First, @Last, @Phone, @Email, @Children, @Adults)", Con);
                     Com.Parameters.Add("@First", SqlDbType.NVarChar).Value = First;
