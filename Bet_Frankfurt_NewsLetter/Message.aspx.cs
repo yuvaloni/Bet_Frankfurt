@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Net;
 using System.Net.Mail;
 using System.Data;
-using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Threading;
 using System.IO;
 
@@ -42,16 +42,16 @@ namespace Bet_Frankfurt_NewsLetter
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
             }; 
-            OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
+            SqlConnection Con = new SqlConnection(@"Data Source=4d0a9a5b-3c6c-457c-b6e4-a32b012a926d.sqlserver.sequelizer.com;Initial Catalog=db4d0a9a5b3c6c457cb6e4a32b012a926d;Persist Security Info=True;User ID=vjyfbkussiygpjsr;Password=3ELEn7FUzjJEgnqRKdYNbfUgTNKoWgvfj2iRjVA2XnU3WrLDdoMGFcNVTDUFvr6s"); 
             Con.Open();
-            OleDbCommand Com3 = new OleDbCommand("SELECT * FROM Contacts", Con);
-            OleDbDataReader r3 = Com3.ExecuteReader();
+            SqlCommand Com3 = new SqlCommand("SELECT * FROM Contacts WHERE Children=1", Con);
+            SqlDataReader r3 = Com3.ExecuteReader();
             while (r3.Read())
             {
                 try
                 {
 
-                    if (r3.GetInt32(5) == 1 && !r3.IsDBNull(3))
+                    if (!r3.IsDBNull(3))
                     {
 
                         var toAddress = new MailAddress(r3.GetString(3));
@@ -77,14 +77,8 @@ namespace Bet_Frankfurt_NewsLetter
 
                 }
             }
+            r3.Close();
             Con.Close();
-            var backup = new MailMessage(fromAddress, fromAddress);
-            File.Copy(Path.Combine(Server.MapPath("~"), "Frankfurt.mdb"), Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
-            backup.Attachments.Add(new Attachment(Path.Combine(Server.MapPath("~"), "BackUp.mdb")));
-            backup.Subject = "Backup " + DateTime.Now.ToString();
-            c.Send(backup);
-            backup.Attachments.Dispose();
-            File.Delete(Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
             TextBox1.Text = "";
             TextBox2.Text = "";
         }
@@ -109,15 +103,15 @@ namespace Bet_Frankfurt_NewsLetter
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
             }; 
-            OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
+            SqlConnection Con = new SqlConnection(@"Data Source=4d0a9a5b-3c6c-457c-b6e4-a32b012a926d.sqlserver.sequelizer.com;Initial Catalog=db4d0a9a5b3c6c457cb6e4a32b012a926d;Persist Security Info=True;User ID=vjyfbkussiygpjsr;Password=3ELEn7FUzjJEgnqRKdYNbfUgTNKoWgvfj2iRjVA2XnU3WrLDdoMGFcNVTDUFvr6s"); 
             Con.Open();
-            OleDbCommand Com3 = new OleDbCommand("SELECT * FROM Contacts", Con);
-            OleDbDataReader r3 = Com3.ExecuteReader();
+            SqlCommand Com3 = new SqlCommand("SELECT * FROM Contacts WHERE Adults=1", Con);
+            SqlDataReader r3 = Com3.ExecuteReader();
             while (r3.Read())
             {
                 try
                 {
-                    if (r3.GetInt32(6) == 1 && !r3.IsDBNull(3))
+                    if (!r3.IsDBNull(3))
                     {
 
                         var toAddress = new MailAddress(r3.GetString(3));
@@ -141,14 +135,8 @@ namespace Bet_Frankfurt_NewsLetter
                 }
                 catch { }
             }
+            r3.Close();
             Con.Close();
-            var backup = new MailMessage(fromAddress, fromAddress);
-            File.Copy(Path.Combine(Server.MapPath("~"), "Frankfurt.mdb"), Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
-            backup.Attachments.Add(new Attachment(Path.Combine(Server.MapPath("~"), "BackUp.mdb")));
-            backup.Subject = "Backup " + DateTime.Now.ToString();
-            c.Send(backup);
-            backup.Attachments.Dispose();
-            File.Delete(Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
             TextBox1.Text = "";
             TextBox2.Text = "";
         }
@@ -173,10 +161,10 @@ namespace Bet_Frankfurt_NewsLetter
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
             }; 
-            OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
+            SqlConnection Con = new SqlConnection(@"Data Source=4d0a9a5b-3c6c-457c-b6e4-a32b012a926d.sqlserver.sequelizer.com;Initial Catalog=db4d0a9a5b3c6c457cb6e4a32b012a926d;Persist Security Info=True;User ID=vjyfbkussiygpjsr;Password=3ELEn7FUzjJEgnqRKdYNbfUgTNKoWgvfj2iRjVA2XnU3WrLDdoMGFcNVTDUFvr6s"); 
              Con.Open();
-            OleDbCommand Com3 = new OleDbCommand("SELECT * FROM Contacts", Con);
-            OleDbDataReader r3 = Com3.ExecuteReader();
+            SqlCommand Com3 = new SqlCommand("SELECT * FROM Contacts", Con);
+            SqlDataReader r3 = Com3.ExecuteReader();
             while (r3.Read())
             {
                 try
@@ -206,14 +194,8 @@ namespace Bet_Frankfurt_NewsLetter
 
                 }
             }
+            r3.Close();
             Con.Close();
-            var backup = new MailMessage(fromAddress, fromAddress);
-            File.Copy(Path.Combine(Server.MapPath("~"), "Frankfurt.mdb"), Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
-            backup.Attachments.Add(new Attachment(Path.Combine(Server.MapPath("~"), "BackUp.mdb")));
-            backup.Subject = "Backup " + DateTime.Now.ToString();
-            c.Send(backup);
-            backup.Attachments.Dispose();
-            File.Delete(Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
             TextBox1.Text = "";
             TextBox2.Text = "";
         }

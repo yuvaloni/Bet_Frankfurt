@@ -312,7 +312,7 @@ function ValidatorConvert(op, dataType, val) {
         return ((year > twoDigitCutoffYear) ? (cutoffYearCentury - 100 + year) : (cutoffYearCentury + year));
     }
     var num, cleanInput, m, exp;
-    if (dataType == "Integer") {
+    if (dataType == "Int") {
         exp = /^\s*[-\+]?\d+\s*$/;
         if (op.match(exp) == null)
             return null;

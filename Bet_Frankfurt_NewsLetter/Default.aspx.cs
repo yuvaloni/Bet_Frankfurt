@@ -6,9 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
 using System.Data;
-using System.Data.OleDb;
+using System.Data.Sql;
 using System.IO;
-
+using System.Data.SqlClient;
 namespace Bet_Frankfurt_NewsLetter
 {
    
@@ -58,21 +58,21 @@ namespace Bet_Frankfurt_NewsLetter
                     string Last = TextBox1.Text.Split(' ')[1];
                     string Phone = TextBox3.Text;
                     string Email = TextBox2.Text;
-                    OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='"+Path.Combine(Server.MapPath("~"),"Frankfurt.mdb")+"'");
+                    SqlConnection Con = new SqlConnection(@"Provider=Microsoft.Jet.Sql.4.0;Data Source='"+Path.Combine(Server.MapPath("~"),"Frankfurt.mdb")+"'");
                     Con.Open();
-                    OleDbCommand Com = new OleDbCommand("INSERT INTO Contacts ([first],[last],[phone],[email], [children], [adults]) VALUES (@First, @Last, @Phone, @Email, @Children, @Adults)", Con);
-                   Com.Parameters.Add("@First", OleDbType.WChar).Value = First;
-                   Com.Parameters.Add("@Last", OleDbType.WChar).Value = Last;
-                   Com.Parameters.Add("@Email", OleDbType.WChar).Value = Email;
-                Com.Parameters.Add("@Phone", OleDbType.WChar).Value = Phone==""?"No":Phone;
+                    SqlCommand Com = new SqlCommand("INSERT INTO Contacts ([first],[last],[phone],[email], [children], [adults]) VALUES (@First, @Last, @Phone, @Email, @Children, @Adults)", Con);
+                    Com.Parameters.Add("@First", SqlDbType.NVarChar).Value = First;
+                   Com.Parameters.Add("@Last", SqlDbType.NVarChar).Value = Last;
+                   Com.Parameters.Add("@Email", SqlDbType.NVarChar).Value = Email;
+                Com.Parameters.Add("@Phone", SqlDbType.NVarChar).Value = Phone==""?"No":Phone;
                    if(CheckBox1.Checked)
-                       Com.Parameters.Add("@Children", OleDbType.Integer).Value = 1;
+                       Com.Parameters.Add("@Children", SqlDbType.Int).Value = 1;
                    else
-                       Com.Parameters.Add("@Children", OleDbType.Integer).Value = 0;
+                       Com.Parameters.Add("@Children", SqlDbType.Int).Value = 0;
                    if (CheckBox2.Checked)
-                       Com.Parameters.Add("@Adults", OleDbType.Integer).Value = 1;
+                       Com.Parameters.Add("@Adults", SqlDbType.Int).Value = 1;
                    else
-                       Com.Parameters.Add("@Adults", OleDbType.Integer).Value = 0;
+                       Com.Parameters.Add("@Adults", SqlDbType.Int).Value = 0;
 
 
                     Com.ExecuteNonQuery();

@@ -5,8 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-using System.Data.OleDb;
+using System.Data.Sql;
 using System.IO;
+using System.Data.SqlClient;
 namespace Bet_Frankfurt_NewsLetter
 {
     public partial class People : System.Web.UI.Page
@@ -17,10 +18,10 @@ namespace Bet_Frankfurt_NewsLetter
             {
                 if (Session["pass"] == null)
                     Response.Redirect("CPANEL.aspx");
-                OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
+                SqlConnection Con = new SqlConnection(@"Data Source=4d0a9a5b-3c6c-457c-b6e4-a32b012a926d.sqlserver.sequelizer.com;Initial Catalog=db4d0a9a5b3c6c457cb6e4a32b012a926d;Persist Security Info=True;User ID=vjyfbkussiygpjsr;Password=3ELEn7FUzjJEgnqRKdYNbfUgTNKoWgvfj2iRjVA2XnU3WrLDdoMGFcNVTDUFvr6s"); 
                 Con.Open();
-                OleDbCommand Com = new OleDbCommand("SELECT * FROM Contacts", Con);
-                OleDbDataReader r = Com.ExecuteReader();
+                SqlCommand Com = new SqlCommand("SELECT * FROM Contacts", Con);
+                SqlDataReader r = Com.ExecuteReader();
                 while (r.Read())
                 {
                     string first = r.IsDBNull(1) ? "" : r.GetString(1);
@@ -36,7 +37,7 @@ namespace Bet_Frankfurt_NewsLetter
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
+            SqlConnection Con = new SqlConnection(@"Data Source=4d0a9a5b-3c6c-457c-b6e4-a32b012a926d.sqlserver.sequelizer.com;Initial Catalog=db4d0a9a5b3c6c457cb6e4a32b012a926d;Persist Security Info=True;User ID=vjyfbkussiygpjsr;Password=3ELEn7FUzjJEgnqRKdYNbfUgTNKoWgvfj2iRjVA2XnU3WrLDdoMGFcNVTDUFvr6s"); 
             Con.Open();
             foreach (ListItem n in ListBox1.Items)
             {
@@ -44,11 +45,12 @@ namespace Bet_Frankfurt_NewsLetter
                 {
                     string v = n.ToString().Split('-')[2];
 
-                    OleDbCommand Com = new OleDbCommand("DELETE DISTINCTROW * FROM Contacts WHERE [phone] = @p", Con);
-                    Com.Parameters.Add(new OleDbParameter("@p", OleDbType.WChar)).Value = v;
+                    SqlCommand Com = new SqlCommand("DELETE Contacts WHERE [phone] = @p", Con);
+                    Com.Parameters.Add(new SqlParameter("@p", SqlDbType.NVarChar)).Value = v;
                     Com.ExecuteNonQuery();
                     ListBox1.Items.Remove(n);
                     break;
+                    
 
                 }
 

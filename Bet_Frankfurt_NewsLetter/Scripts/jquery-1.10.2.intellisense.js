@@ -1153,7 +1153,7 @@ intellisense.annotate(jQuery.fn, {
   'delay': function() {
     /// <signature>
     ///   <summary>Set a timer to delay execution of subsequent items in the queue.</summary>
-    ///   <param name="duration" type="Number">An integer indicating the number of milliseconds to delay execution of the next item in the queue.</param>
+    ///   <param name="duration" type="Number">An Int indicating the number of milliseconds to delay execution of the next item in the queue.</param>
     ///   <param name="queueName" type="String">A string containing the name of the queue. Defaults to fx, the standard effects queue.</param>
     ///   <returns type="jQuery" />
     /// </signature>
@@ -1438,7 +1438,7 @@ intellisense.annotate(jQuery.fn, {
   'get': function() {
     /// <signature>
     ///   <summary>Retrieve the DOM elements matched by the jQuery object.</summary>
-    ///   <param name="index" type="Number">A zero-based integer indicating which element to retrieve.</param>
+    ///   <param name="index" type="Number">A zero-based Int indicating which element to retrieve.</param>
     ///   <returns type="Element, Array" />
     /// </signature>
   },
@@ -1473,7 +1473,7 @@ intellisense.annotate(jQuery.fn, {
   'height': function() {
     /// <signature>
     ///   <summary>Set the CSS height of every matched element.</summary>
-    ///   <param name="value" type="Number">An integer representing the number of pixels, or an integer with an optional unit of measure appended (as a string).</param>
+    ///   <param name="value" type="Number">An Int representing the number of pixels, or an Int with an optional unit of measure appended (as a string).</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1576,11 +1576,11 @@ intellisense.annotate(jQuery.fn, {
   },
   'innerHeight': function() {
     /// <summary>Get the current computed height for the first element in the set of matched elements, including padding but not border.</summary>
-    /// <returns type="Integer" />
+    /// <returns type="Int" />
   },
   'innerWidth': function() {
     /// <summary>Get the current computed width for the first element in the set of matched elements, including padding but not border.</summary>
-    /// <returns type="Integer" />
+    /// <returns type="Int" />
   },
   'input': function() {
     /// <summary>Selects all input, textarea, select and button elements.</summary>
@@ -1937,7 +1937,7 @@ intellisense.annotate(jQuery.fn, {
   'offset': function() {
     /// <signature>
     ///   <summary>Set the current coordinates of every element in the set of matched elements, relative to the document.</summary>
-    ///   <param name="coordinates" type="PlainObject">An object containing the properties top and left, which are integers indicating the new top and left coordinates for the elements.</param>
+    ///   <param name="coordinates" type="PlainObject">An object containing the properties top and left, which are Ints indicating the new top and left coordinates for the elements.</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>
@@ -1999,16 +1999,16 @@ intellisense.annotate(jQuery.fn, {
   },
   'outerHeight': function() {
     /// <signature>
-    ///   <summary>Get the current computed height for the first element in the set of matched elements, including padding, border, and optionally margin. Returns an integer (without "px") representation of the value or null if called on an empty set of elements.</summary>
+    ///   <summary>Get the current computed height for the first element in the set of matched elements, including padding, border, and optionally margin. Returns an Int (without "px") representation of the value or null if called on an empty set of elements.</summary>
     ///   <param name="includeMargin" type="Boolean">A Boolean indicating whether to include the element's margin in the calculation.</param>
-    ///   <returns type="Integer" />
+    ///   <returns type="Int" />
     /// </signature>
   },
   'outerWidth': function() {
     /// <signature>
     ///   <summary>Get the current computed width for the first element in the set of matched elements, including padding and border.</summary>
     ///   <param name="includeMargin" type="Boolean">A Boolean indicating whether to include the element's margin in the calculation.</param>
-    ///   <returns type="Integer" />
+    ///   <returns type="Int" />
     /// </signature>
   },
   'parent': function() {
@@ -2261,14 +2261,14 @@ intellisense.annotate(jQuery.fn, {
   'scrollLeft': function() {
     /// <signature>
     ///   <summary>Set the current horizontal position of the scroll bar for each of the set of matched elements.</summary>
-    ///   <param name="value" type="Number">An integer indicating the new position to set the scroll bar to.</param>
+    ///   <param name="value" type="Number">An Int indicating the new position to set the scroll bar to.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
   'scrollTop': function() {
     /// <signature>
     ///   <summary>Set the current vertical position of the scroll bar for each of the set of matched elements.</summary>
-    ///   <param name="value" type="Number">An integer indicating the new position to set the scroll bar to.</param>
+    ///   <param name="value" type="Number">An Int indicating the new position to set the scroll bar to.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2334,8 +2334,8 @@ intellisense.annotate(jQuery.fn, {
   'slice': function() {
     /// <signature>
     ///   <summary>Reduce the set of matched elements to a subset specified by a range of indices.</summary>
-    ///   <param name="start" type="Number">An integer indicating the 0-based position at which the elements begin to be selected. If negative, it indicates an offset from the end of the set.</param>
-    ///   <param name="end" type="Number">An integer indicating the 0-based position at which the elements stop being selected. If negative, it indicates an offset from the end of the set. If omitted, the range continues until the end of the set.</param>
+    ///   <param name="start" type="Number">An Int indicating the 0-based position at which the elements begin to be selected. If negative, it indicates an offset from the end of the set.</param>
+    ///   <param name="end" type="Number">An Int indicating the 0-based position at which the elements stop being selected. If negative, it indicates an offset from the end of the set. If omitted, the range continues until the end of the set.</param>
     ///   <returns type="jQuery" />
     /// </signature>
   },
@@ -2596,7 +2596,7 @@ intellisense.annotate(jQuery.fn, {
   'width': function() {
     /// <signature>
     ///   <summary>Set the CSS width of each element in the set of matched elements.</summary>
-    ///   <param name="value" type="Number">An integer representing the number of pixels, or an integer along with an optional unit of measure appended (as a string).</param>
+    ///   <param name="value" type="Number">An Int representing the number of pixels, or an Int along with an optional unit of measure appended (as a string).</param>
     ///   <returns type="jQuery" />
     /// </signature>
     /// <signature>

@@ -7,9 +7,10 @@ using System.Web.UI.WebControls;
 using System.Net;
 using System.Net.Mail;
 using System.Data;
-using System.Data.OleDb;
+using System.Data.Sql;
 using System.Threading;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace Bet_Frankfurt_NewsLetter
 {
@@ -36,30 +37,32 @@ namespace Bet_Frankfurt_NewsLetter
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
             }; 
-            OleDbConnection Con = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source='" + Path.Combine(Server.MapPath("~"), "Frankfurt.mdb") + "'");
+            SqlConnection Con = new SqlConnection(@"Data Source=4d0a9a5b-3c6c-457c-b6e4-a32b012a926d.sqlserver.sequelizer.com;Initial Catalog=db4d0a9a5b3c6c457cb6e4a32b012a926d;Persist Security Info=True;User ID=vjyfbkussiygpjsr;Password=3ELEn7FUzjJEgnqRKdYNbfUgTNKoWgvfj2iRjVA2XnU3WrLDdoMGFcNVTDUFvr6s"); 
             Con.Open();
             string children = "<h3> אירועים לילדים </h3> </br> <table>";
-            OleDbCommand Com = new OleDbCommand("SELECT * FROM Children WHERE [month] = @month AND [day] = @day", Con);
-            Com.Parameters.Add("@month", OleDbType.Integer).Value = m;
-            Com.Parameters.Add("@day", OleDbType.Integer).Value = d;
-            OleDbDataReader r = Com.ExecuteReader();
+            SqlCommand Com = new SqlCommand("SELECT * FROM Children WHERE [month] = @month AND [day] = @day", Con);
+            Com.Parameters.Add("@month", SqlDbType.Int).Value = m;
+            Com.Parameters.Add("@day", SqlDbType.Int).Value = d;
+            SqlDataReader r = Com.ExecuteReader();
             while (r.Read())
             {
                 children += "<tr><td><h4>" + r.GetString(1) + "</h4></br><h5>" + r.GetString(2) + "</h5></br>" + r.GetString(3) + @"</br><img src='http://betfrankufrtnewsletter.apphb.com/pics/"+r.GetString(6)+"'></img></br></td></tr>";
             }
             children += "</table>";
+            r.Close();
             string adults = "<h3> אירועים למבוגרים </h3> </br> <table>";
-            OleDbCommand Com2 = new OleDbCommand("SELECT * FROM Adults WHERE [month] = @month AND [day] = @day", Con);
-            Com2.Parameters.Add("@month", OleDbType.Integer).Value = m;
-            Com2.Parameters.Add("@day", OleDbType.Integer).Value = d;
-            OleDbDataReader r2 = Com2.ExecuteReader();
+            SqlCommand Com2 = new SqlCommand("SELECT * FROM Adults WHERE [month] = @month AND [day] = @day", Con);
+            Com2.Parameters.Add("@month", SqlDbType.Int).Value = m;
+            Com2.Parameters.Add("@day", SqlDbType.Int).Value = d;
+            SqlDataReader r2 = Com2.ExecuteReader();
             while (r2.Read())
             {
                 adults += "<tr><td><h4>" + r2.GetString(1) + "</h4></br><h5>" + r2.GetString(2) + "</h5></br>" + r2.GetString(3) + "</br><img  src='http://betfrankufrtnewsletter.apphb.com/pics/" + r2.GetString(6) + "'></img></br></td></tr>";
             }
             adults += "</table>";
-            OleDbCommand Com3 = new OleDbCommand("SELECT * FROM Contacts", Con);
-            OleDbDataReader r3 = Com3.ExecuteReader();
+            r2.Close();
+            SqlCommand Com3 = new SqlCommand("SELECT * FROM Contacts", Con);
+            SqlDataReader r3 = Com3.ExecuteReader();
             while (r3.Read())
             {
                 try
@@ -82,6 +85,7 @@ namespace Bet_Frankfurt_NewsLetter
                     };
                     message.IsBodyHtml = true;
                     c.Send(message);
+                    r3.Close();
                 } 
                 catch
                 {
@@ -91,36 +95,31 @@ namespace Bet_Frankfurt_NewsLetter
             IEnumerable<string> shit =  Directory.EnumerateFiles(Path.Combine(Server.MapPath("~"), "Pics" ));
            foreach(string file in shit)
            {
-            OleDbCommand p11 = new OleDbCommand("SELECT * FROM Adults WHERE [pic] = @f", Con);
-            p11.Parameters.Add("@f",OleDbType.WChar).Value=file.Split('\\')[file.Split('\\').Length-1];
-            OleDbDataReader rp11=p11.ExecuteReader();
+            SqlCommand p11 = new SqlCommand("SELECT * FROM Adults WHERE [pic] = @f", Con);
+            p11.Parameters.Add("@f",SqlDbType.NVarChar).Value=file.Split('\\')[file.Split('\\').Length-1];
+            SqlDataReader rp11=p11.ExecuteReader();
             if(!rp11.Read())
             {
-                             OleDbCommand p21 = new OleDbCommand("SELECT * FROM Children WHERE [pic] = @f", Con);
-                            p21.Parameters.Add("@f",OleDbType.WChar).Value=file.Split('\\')[file.Split('\\').Length-1];
-                            OleDbDataReader rp21=p21.ExecuteReader();
+                             SqlCommand p21 = new SqlCommand("SELECT * FROM Children WHERE [pic] = @f", Con);
+                            p21.Parameters.Add("@f",SqlDbType.NVarChar).Value=file.Split('\\')[file.Split('\\').Length-1];
+                            SqlDataReader rp21=p21.ExecuteReader();
                             if(!rp21.Read()) File.Delete(file);
+                            rp21.Close();
             }
+            rp11.Close();
                
            }
-            OleDbCommand e1 = new OleDbCommand("DELETE * FROM Children WHERE [month] = @month  AND [day] = @day", Con);
-            e1.Parameters.Add("@month", OleDbType.Integer).Value = m;
-            e1.Parameters.Add("@day", OleDbType.Integer).Value = d;
+            SqlCommand e1 = new SqlCommand("DELETE * FROM Children WHERE [month] = @month  AND [day] = @day", Con);
+            e1.Parameters.Add("@month", SqlDbType.Int).Value = m;
+            e1.Parameters.Add("@day", SqlDbType.Int).Value = d;
 
             e1.ExecuteNonQuery();
-            OleDbCommand e2 = new OleDbCommand("DELETE * FROM Adults WHERE [month] = @month  AND [day] = @day", Con);
-            e2.Parameters.Add("@month", OleDbType.Integer).Value = m;
-            e2.Parameters.Add("@day", OleDbType.Integer).Value = d;
+            SqlCommand e2 = new SqlCommand("DELETE * FROM Adults WHERE [month] = @month  AND [day] = @day", Con);
+            e2.Parameters.Add("@month", SqlDbType.Int).Value = m;
+            e2.Parameters.Add("@day", SqlDbType.Int).Value = d;
 
             e2.ExecuteNonQuery();
             Con.Close();
-            var backup = new MailMessage(fromAddress, fromAddress);
-            File.Copy(Path.Combine(Server.MapPath("~"), "Frankfurt.mdb"), Path.Combine(Server.MapPath("~"), "Backup.mdb"));
-            backup.Attachments.Add(new Attachment(Path.Combine(Server.MapPath("~"), "BackUp.mdb")));
-            backup.Subject = "Backup " + DateTime.Now.ToString();
-            c.Send(backup);
-            backup.Attachments.Dispose();
-            File.Delete(Path.Combine(Server.MapPath("~"), "BackUp.mdb"));
             
         }
     }
