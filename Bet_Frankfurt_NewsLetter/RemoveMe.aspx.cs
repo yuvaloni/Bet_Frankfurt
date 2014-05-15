@@ -16,7 +16,7 @@ namespace Bet_Frankfurt_NewsLetter
         {
             SqlConnection Con = new SqlConnection(@"Data Source=4d0a9a5b-3c6c-457c-b6e4-a32b012a926d.sqlserver.sequelizer.com;Initial Catalog=db4d0a9a5b3c6c457cb6e4a32b012a926d;Persist Security Info=True;User ID=vjyfbkussiygpjsr;Password=3ELEn7FUzjJEgnqRKdYNbfUgTNKoWgvfj2iRjVA2XnU3WrLDdoMGFcNVTDUFvr6s"); 
             Con.Open();
-            SqlCommand Com = new SqlCommand("DELETE Contacts WHERE [email] = @n", Con);
+            SqlCommand Com = new SqlCommand("DELETE Contacts WHERE [phone] = @n", Con);
             Com.Parameters.Add(new SqlParameter("@n", SqlDbType.NVarChar)).Value = Request.QueryString["user"];
             Com.ExecuteNonQuery();
             Con.Close();
