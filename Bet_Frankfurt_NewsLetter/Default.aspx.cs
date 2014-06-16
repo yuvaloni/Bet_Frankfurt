@@ -60,37 +60,49 @@ namespace Bet_Frankfurt_NewsLetter
                     string Email = TextBox2.Text;
                     SqlConnection Con = new SqlConnection(@"Data Source=4d0a9a5b-3c6c-457c-b6e4-a32b012a926d.sqlserver.sequelizer.com;Initial Catalog=db4d0a9a5b3c6c457cb6e4a32b012a926d;Persist Security Info=True;User ID=vjyfbkussiygpjsr;Password=3ELEn7FUzjJEgnqRKdYNbfUgTNKoWgvfj2iRjVA2XnU3WrLDdoMGFcNVTDUFvr6s"); 
                     Con.Open();
-                    SqlCommand Com = new SqlCommand("INSERT INTO Contacts ([first],[last],[phone],[email], [children], [adults]) VALUES (@First, @Last, @Email, @Phone, @Children, @Adults)", Con);
-                    Com.Parameters.Add("@First", SqlDbType.NVarChar).Value = First;
-                   Com.Parameters.Add("@Last", SqlDbType.NVarChar).Value = Last;
-                   Com.Parameters.Add("@Email", SqlDbType.NVarChar).Value = Email;
-                Com.Parameters.Add("@Phone", SqlDbType.NVarChar).Value = Phone==""?"No":Phone;
-                   if(CheckBox1.Checked)
-                       Com.Parameters.Add("@Children", SqlDbType.Int).Value = 1;
-                   else
-                       Com.Parameters.Add("@Children", SqlDbType.Int).Value = 0;
-                   if (CheckBox2.Checked)
-                       Com.Parameters.Add("@Adults", SqlDbType.Int).Value = 1;
-                   else
-                       Com.Parameters.Add("@Adults", SqlDbType.Int).Value = 0;
+                    SqlCommand Ver = new SqlCommand("select * from Contacts where phone=@p", Con);
+                    Ver.Parameters.Add(new SqlParameter("@p", SqlDbType.VarChar).Value = TextBox2.Text);
+                    SqlDataReader r = Ver.ExecuteReader();
+                    if (!r.Read())
+                    {
+                        SqlCommand Com = new SqlCommand("INSERT INTO Contacts ([first],[last],[phone],[email], [children], [adults]) VALUES (@First, @Last, @Email, @Phone, @Children, @Adults)", Con);
+                        Com.Parameters.Add("@First", SqlDbType.NVarChar).Value = First;
+                        Com.Parameters.Add("@Last", SqlDbType.NVarChar).Value = Last;
+                        Com.Parameters.Add("@Email", SqlDbType.NVarChar).Value = Email;
+                        Com.Parameters.Add("@Phone", SqlDbType.NVarChar).Value = Phone == "" ? "No" : Phone;
+                        if (CheckBox1.Checked)
+                            Com.Parameters.Add("@Children", SqlDbType.Int).Value = 1;
+                        else
+                            Com.Parameters.Add("@Children", SqlDbType.Int).Value = 0;
+                        if (CheckBox2.Checked)
+                            Com.Parameters.Add("@Adults", SqlDbType.Int).Value = 1;
+                        else
+                            Com.Parameters.Add("@Adults", SqlDbType.Int).Value = 0;
 
 
-                    Com.ExecuteNonQuery();
+                        Com.ExecuteNonQuery();
+
+                        Response.Write(
+                            @"<SCRIPT LANGUAGE=""JavaScript"">alert('תודה רבה')</SCRIPT>");
+
+                        invalid1 = false;
+                        invalid2 = false;
+                        invalid3 = true;
+                        TextBox1.Text = "";
+                        TextBox2.Text = "";
+                        TextBox3.Text = "";
+                        CheckBox1.Checked = false;
+                        CheckBox2.Checked = false;
+                    }
+                    else
+                    {
+                        Response.Write(
+                            @"<SCRIPT LANGUAGE=""JavaScript"">alert('כתובת אימייל כבק קיימת במערכת')</SCRIPT>");
+                    }
+                    r.Close();
                     Con.Close();
 
                
-
-                Response.Write(
-                    @"<SCRIPT LANGUAGE=""JavaScript"">alert('Thank you very much!')</SCRIPT>");
-
-                invalid1 = false;
-                invalid2 = false;
-                invalid3 = true;
-                TextBox1.Text = "";
-                TextBox2.Text = "";
-                TextBox3.Text = "";
-                CheckBox1.Checked = false;
-                CheckBox2.Checked = false;
             }
         }
 
